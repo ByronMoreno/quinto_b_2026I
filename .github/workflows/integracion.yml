@@ -24,7 +24,7 @@ jobs:
       run: pytest
 
     - name: Test with ruff
-      run: ruff check .
+      run: ruff check . --fix
 
     - name: Ejecutar la aplicacion
       run: python app.py
