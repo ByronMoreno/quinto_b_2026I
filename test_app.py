@@ -1,3 +1,3 @@
 def test_prueba():
     mensaje = "Hola de github"
-    assert "Hola" in mensaje
+    assert "Yavirac" in mensaje
