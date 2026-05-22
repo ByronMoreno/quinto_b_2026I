@@ -4,6 +4,10 @@ on:
   push:
     branches: [ "main" ]
 
+permissions:
+      contents: read
+      packages: write
+
 jobs:
   build:
 
@@ -31,3 +35,12 @@ jobs:
     
     - name: Simulacion del deploy
       run: echo "Desplegando la app"
+    
+    - name: Construir imagen Docker
+      run: docker build -t ghcr.io/USUARIO/python-ruff:1.0.0 .
+
+    - name: Login en GitHub Container Registry
+      run: echo "${{ secrets.GHCR_PATH }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+    
+    - name: Publicar imagen Docker
+      run: docker push ghcr.io/USUARIO/python-ruff:1.0.0
